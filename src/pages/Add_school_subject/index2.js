@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { storeData, getData } from '../../data/storageData.js';
 
-export default function Add_Subject2() {
+export default function Add_Subject() {
 
     const [subject, setSubject] = useState([])
     const [subjectName, setSubjectName] = useState('')
@@ -10,11 +11,9 @@ export default function Add_Subject2() {
     const [teachName, setTeachName] = useState('')
     const [email, setEmail] = useState('')
 
-    const addSubject = async() =>{
-        const newSubject = {nome: {subjectName}, room: {room}, teach: {teachName}, mail: {email}}
-        setSubject([...subject, newSubject])
-        const jsonValue = JSON.stringify(subject)
-        await AsyncStorage.setItem('@subjects', jsonValue)
+    const addSubject = () =>{
+        storeData("name", subjectName)
+        storeData("")
         Navigation.navigate('Home')
     }
 
@@ -44,7 +43,7 @@ export default function Add_Subject2() {
 
             </View>
             <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.button} onPress={addSubject()}>
+                <TouchableOpacity style={styles.button} onPress={addSubject}>
                   <Text style={styles.buttonText}>
                     Adicionar Matéria
                   </Text>
