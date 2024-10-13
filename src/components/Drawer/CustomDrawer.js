@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItems, DrawerItem} from '@react-navigation/drawer';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import { storeData, getData } from '../../data/storageData.js';
 
 export default function CustomDrawer(props) {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: "row",
         backgroundColor: "#E0E0E0",
-        borderTopRightRadius: RFValue(20)
+        borderTopRightRadius: RFPercentage(2)
     },
     headerText: {
         fontWeight: "bold",
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: '#F2B94C',
-        borderBottomRightRadius: RFValue(20)
+        borderBottomRightRadius:RFPercentage(2)
     },
     bottomText: {
         fontWeight: "bold",
