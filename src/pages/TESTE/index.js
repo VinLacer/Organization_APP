@@ -13,7 +13,7 @@ export default function TESTE() {
     }, [subjects]); 
 
     function Teste() {
-        const teste = JSON.parse(subjects[1][1]);
+        const teste = JSON.parse(subjects[0][1]);
         setFinal(teste);
         console.log("Conteudo : " + teste.teachName);
         console.log("Chaves : " + Keys);
@@ -26,8 +26,8 @@ export default function TESTE() {
                     Botao
                 </Text>
             </TouchableOpacity>
-            <Text>
-                {JSON.stringify(Final)}
+            <Text style ={[{fontSize: 40}]}>
+                {JSON.stringify(Final.schedule)}
             </Text>
         </View>
     )

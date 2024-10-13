@@ -15,7 +15,7 @@ export default function CustomDrawer(props) {
             </View>
 
             {/*DRAWER LIST ITEM*/}
-            <View style={[{height: "80%", backgroundColor: 'red'}]}>
+            <View style={[{height: "80%", backgroundColor: '#E0E0E0'}]}>
             
             </View>
             
@@ -39,7 +39,10 @@ const styles = StyleSheet.create({
     header: {
         height: "10%",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flexDirection: "row",
+        backgroundColor: "#E0E0E0",
+        borderTopRightRadius: RFValue(20)
     },
     headerText: {
         fontWeight: "bold",
@@ -48,7 +51,8 @@ const styles = StyleSheet.create({
     bottom: {
         height: "10%",
         justifyContent: "center",
-        alignItems: "center", backgroundColor: 'blue',
+        alignItems: "center",
+        backgroundColor: '#F2B94C',
         borderBottomRightRadius: RFValue(20)
     },
     bottomText: {

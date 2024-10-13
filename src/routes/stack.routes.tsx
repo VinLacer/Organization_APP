@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 export default function DrawerRoutes() {
     return(
         <Drawer.Navigator 
-        screenOptions={{drawerStyle: styles.drawerStyles, headerTransparent:true}}
+        screenOptions={{drawerStyle: styles.drawerStyles, headerTransparent:true, headerStyle: {backgroundColor: "#D9D9D9"}}}
         drawerContent={(props) => <CustomDrawer{...props}/>}
         initialRouteName="Home">
 
@@ -34,7 +34,6 @@ export default function DrawerRoutes() {
 const styles = StyleSheet.create({
     drawerStyles: {
         width: "70%",
-        backgroundColor:"white",
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20
     }
