@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItems, DrawerItem} from '@react-navigation/drawer';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { storeData, getData } from '../../data/storageData.js';
 
 export default function CustomDrawer(props) {
     return(

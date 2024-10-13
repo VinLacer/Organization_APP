@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 import CustomDrawer from "../components/Drawer/CustomDrawer";
 
 import Home from "../pages/Home/index";
-import Add_subject from "../pages/Add_school_subject";
+import Add_Subject from "../pages/Add_school_subject";
+import TESTE from "../pages/TESTE/index";
 
 const Drawer = createDrawerNavigator();
 
@@ -14,11 +15,17 @@ export default function DrawerRoutes() {
         drawerContent={(props) => <CustomDrawer{...props}/>}
         initialRouteName="Home">
 
-            <Drawer.Screen name="Home" component={Home}
+            <Drawer.Screen name="Home" 
+            component={Home}
             options={{title:""}}/>
+
             <Drawer.Screen name="Add subject" 
-            component={Add_subject}
+            component={Add_Subject}
             options={{title:"Adicionar matéria", headerTitleAlign:"center"}}/>
+
+            <Drawer.Screen name="Teste"
+            component={TESTE}
+            options={{title:"Pagina de teste", headerTitleAlign:"center"}}/>
 
         </Drawer.Navigator>
     )
