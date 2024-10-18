@@ -1,47 +1,28 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { ScrollView, View, StyleSheet} from 'react-native';
 import { storeData } from '../../data/storageData.js';
 import { useNavigation } from '@react-navigation/native';
 import EntryText from '../../components/InputText/index.js';
 import Add_Subject_Button from '../../components/Add_subject_button/index.js';
+import { ScheduleInputContext } from '../../contexts/ScheduleContext/index.js'
+import Schedule from '../../components/Schedule_inpt/index.js';
+import { ScheduleInputContext } from '../../contexts/ScheduleContext/index.js';
 
 export default function Add_Subject() {
 
-    const [Subject, setSubject] = useState({
-      name:'',
-      teachName: '',
-      email: '',
-      schedule:{room1: '',
-                day1: '',
-                time1: ''
-      }
-    })
-Subject.schedule.room2 = valor
-    const addPropriedade = () => {
-      obj(prevState => ({
-        ...prevState, new: 'valor'
-      }))
-    }
-    function handleName(event) {
-        setSubject({...Subject, name: event.target.value})
-    }
-
 
     const [subjectName, setSubjectName] = useState('')
-    const [room1, setRoom1] = useState('')
-    const [time1, setTime1] = useState();
-    const [room2, setRoom2] = useState('')
-    const [time2, setTime2] = useState();
     const [teachName, setTeachName] = useState('')
     const [email, setEmail] = useState('')
-    const [day1, setDay1] = useState("");
-    const [day2, setDay2] = useState("");
     const [oneHorarios, setOneHorarios] = useState(true)
 
     const Navigation = useNavigation();
-function mudar(param) {
-    param
-}
+
+
+    const { schedulecontext } = useContext(ScheduleInputContext)
+    const { resetSchedule } = useContext(ScheduleInputContext);
+
+
     const addSubject = () =>{
       const subject = {}
       if(oneHorarios == true) {
@@ -66,6 +47,7 @@ function mudar(param) {
       }
       
       storeData(subject)
+      resetSchedule()
     }
 
     return(
@@ -75,9 +57,13 @@ function mudar(param) {
             <EntryText Titulo={"Email do Professor"} Name={email} setName={setEmail}/>
             <ScrollView style={styles.ScroolContainer}>
               {oneHorarios ? (
-
+                <View>
+                  <Schedule day={"day1"} room={"room1"} />
+                </View>
               ) : (
-                
+                <View>
+
+                </View>
               )}
             </ScrollView>
             <Add_Subject_Button add_subject={addSubject}/>
