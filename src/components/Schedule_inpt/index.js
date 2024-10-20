@@ -1,20 +1,10 @@
 import { View, TextInput, Text, StyleSheet } from "react-native"
 import { Picker } from '@react-native-picker/picker';
-import React, {createContext, useContext, useState} from 'react';
-import { ScheduleInputContext } from "../../contexts/ScheduleContext";
-import { ScheduleInputProvider } from "../../contexts/ScheduleContext";
+import { RFPercentage } from "react-native-responsive-fontsize";
+import TimePicker from "../Time_picker";
 
+export default function Schedule({subject, number, setRoom, setDay, setTimeIN, setTimeOUT}) {
 
-
-export default function Schedule({day, room, time}) {
-    const {schedule, setSchedule} = useContext(ScheduleInputContext)
-
-    const handleInputChange = (field, value) => {
-        setSchedule((prevSchedule) => ({
-            ...prevSchedule,
-            [field]: value
-        }));
-    };
     return(
         <View style={styles.container}>
             <View style={styles.classView}>
@@ -24,19 +14,20 @@ export default function Schedule({day, room, time}) {
                 <TextInput
                 style={styles.Input}
                 placeholder="Sala"
-                onChangeText={(value) => handleInputChange(room, value)}
-                value={schedule.room || ''}
+                onChangeText={setRoom}
+                value={subject[`room${number}`] || ''}
                 />
             </View>
-            <View>
+            <View style={styles.PickerView}>
                 <Text style={styles.Text}>
                     Horario
                 </Text>
-                <View>
+                <View style={styles.Picker}>
                     <Picker
-                    onValueChange={(value) => handleInputChange(day, value)}
-                    selectedValue={schedule.day || ''}>
-                        <Picker.Item label = "Selecione o dia" value=""/>
+                    style={[{marginLeft: "-10%"}]}
+                    onValueChange={setDay}
+                    selectedValue={subject[`day${number}`] || ''}>
+                        <Picker.Item label = "Selecione" value=""/>
                         <Picker.Item label = "Segunda" value="segunda"/>
                         <Picker.Item label = "Terça" value="terca"/>
                         <Picker.Item label = "Quarta" value="quarta"/>
@@ -44,6 +35,8 @@ export default function Schedule({day, room, time}) {
                         <Picker.Item label = "Sexta" value="sexta"/>
                         <Picker.Item label = "Sábado" value="sabado"/>
                     </Picker>
+
+                    <TimePicker setTimeIN={setTimeIN} setTimeOUT={setTimeOUT}/>
                 </View>
             </View>
         </View>
@@ -53,23 +46,36 @@ export default function Schedule({day, room, time}) {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        flexDirection: "row"
+        flexDirection: "row",
+        marginLeft: "10%",
+        columnGap: 10
     },
     classView: {
         height: "100%",
-        width: "20%"
+        width: "15%", 
+        // backgroundColor:"blue"
     },
     Input:{
         fontSize: RFPercentage(2),
         marginTop: "1%",
         marginBottom: "4%",
         textDecorationLine: 'underline',
-        width: "50%",
+        width: "70%",
         borderBottomWidth: 1
     },
     Text:{
-        marginTop: "1%",
         fontSize: RFPercentage(3),
         fontWeight: "bold"
     },
+    Picker: {
+        width: "100%",
+        height: "40%",
+        justifyContent: "center",
+        // backgroundColor: "red"
+    },
+    PickerView:{
+        width: "40%",
+        height: "100%",
+        // backgroundColor: "green"
+    }
 })

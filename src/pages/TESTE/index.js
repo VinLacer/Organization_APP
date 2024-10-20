@@ -15,7 +15,7 @@ export default function TESTE() {
     function Teste() {
         const teste = JSON.parse(subjects[0][1]);
         setFinal(teste);
-        console.log("Conteudo : " + teste.teachName);
+        console.log("Conteudo : " + teste.subject.name);
         console.log("Chaves : " + Keys);
     }
 
@@ -26,8 +26,8 @@ export default function TESTE() {
                     Botao
                 </Text>
             </TouchableOpacity>
-            <Text style ={[{fontSize: 40}]}>
-                {JSON.stringify(Final.schedule)}
+            <Text style ={[{fontSize: 20}]}>
+                {JSON.stringify(Final.subject)}
             </Text>
         </View>
     )

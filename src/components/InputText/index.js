@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { ScrollView, View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
+import { ScrollView, View, StyleSheet, Text, TextInput } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function EntryText ({Titulo, Name, setName}){

@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 import CustomDrawer from "../components/Drawer/CustomDrawer";
 
 import Home from "../pages/Home/index";
-import Add_Subject from "../pages/Add_school_subject";
 import TESTE from "../pages/TESTE/index";
+import Add_Subject from "../pages/Add_school_subject";
 
 const Drawer = createDrawerNavigator();
 
