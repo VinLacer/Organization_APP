@@ -15,7 +15,7 @@ export default function TESTE() {
     function Teste() {
         const teste = JSON.parse(subjects[0][1]);
         setFinal(teste);
-        console.log("Conteudo : " + teste.subject.name);
+        console.log(teste);
         console.log("Chaves : " + Keys);
     }
 
@@ -27,7 +27,7 @@ export default function TESTE() {
                 </Text>
             </TouchableOpacity>
             <Text style ={[{fontSize: 20}]}>
-                {JSON.stringify(Final.subject)}
+                {JSON.stringify(Final)}
             </Text>
         </View>
     )

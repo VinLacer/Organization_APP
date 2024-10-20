@@ -15,7 +15,7 @@ export default function Add_Horario({texto, pressed}) {
 
 const styles = StyleSheet.create({
     container: {
-        height: "15%",
+        height: "20%",
         width: "80%",
         justifyContent: "center",
         marginLeft: "10%"

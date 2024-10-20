@@ -1,13 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
-import { storeData } from '../../data/storageData';
-import { useNavigation } from '@react-navigation/native';
 
-export default function Add_Subject_Button(subject) {
-  const Navigation = useNavigation();
+export default function Add_Subject_Button({pressed}) {
+
     return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => {storeData(subject), Navigation.navigate("Home")}}>
+            <TouchableOpacity style={styles.button} onPress={pressed}>
               <Text style={styles.buttonText}>
                 Adicionar Matéria
               </Text>

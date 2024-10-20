@@ -2,8 +2,13 @@ import { View, TextInput, Text, StyleSheet } from "react-native"
 import { Picker } from '@react-native-picker/picker';
 import { RFPercentage } from "react-native-responsive-fontsize";
 import TimePicker from "../Time_picker";
+import { useEffect } from "react";
 
-export default function Schedule({subject, number, setRoom, setDay, setTimeIN, setTimeOUT}) {
+export default function Schedule({subject, number, setRoom, setDay, setTimeIN, setTimeOUT, setPicked1, Picked1, setPicked2, Picked2}) {
+    const schedule = subject.schedule || {}
+
+    useEffect(() => {
+      }, [Picked1, Picked2]);
 
     return(
         <View style={styles.container}>
@@ -15,7 +20,7 @@ export default function Schedule({subject, number, setRoom, setDay, setTimeIN, s
                 style={styles.Input}
                 placeholder="Sala"
                 onChangeText={setRoom}
-                value={subject[`room${number}`] || ''}
+                value={schedule[`room${number}`] || ''}
                 />
             </View>
             <View style={styles.PickerView}>
@@ -26,7 +31,7 @@ export default function Schedule({subject, number, setRoom, setDay, setTimeIN, s
                     <Picker
                     style={[{marginLeft: "-10%"}]}
                     onValueChange={setDay}
-                    selectedValue={subject[`day${number}`] || ''}>
+                    selectedValue={schedule[`day${number}`] || ''}>
                         <Picker.Item label = "Selecione" value=""/>
                         <Picker.Item label = "Segunda" value="segunda"/>
                         <Picker.Item label = "Terça" value="terca"/>
@@ -35,10 +40,11 @@ export default function Schedule({subject, number, setRoom, setDay, setTimeIN, s
                         <Picker.Item label = "Sexta" value="sexta"/>
                         <Picker.Item label = "Sábado" value="sabado"/>
                     </Picker>
-
-                    <TimePicker setTimeIN={setTimeIN} setTimeOUT={setTimeOUT}/>
                 </View>
             </View>
+            <View style={styles.timerInView}>
+                <TimePicker setTimeIN={setTimeIN} setTimeOUT={setTimeOUT} Picked1={Picked1} setPicked1={setPicked1} Picked2={Picked2} setPicked2={setPicked2}/>
+            </View>   
         </View>
     );
 }
@@ -52,8 +58,7 @@ const styles = StyleSheet.create({
     },
     classView: {
         height: "100%",
-        width: "15%", 
-        // backgroundColor:"blue"
+        width: "15%"
     },
     Input:{
         fontSize: RFPercentage(2),
@@ -71,11 +76,16 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "40%",
         justifyContent: "center",
-        // backgroundColor: "red"
     },
     PickerView:{
         width: "40%",
         height: "100%",
-        // backgroundColor: "green"
+    },
+    timerInView: {
+        width: "40%",
+        height: "100%",
+        justifyContent:"center",
+        textAlign: "center"
+        
     }
 })

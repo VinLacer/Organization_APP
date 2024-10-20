@@ -9,21 +9,47 @@ import Add_Horario from '../../components/Add_horario_button/index.js';
 
 
 export default function Add_Subject() {
-        useEffect(() => {
-          
-        }, [subject]);
-        const [subject, setsubject] = useState({});
-        
-        function HandleValue(field, value) {
-            setsubject({
-                ...subject, [field]: value
-            });
+    useEffect(() => {
+    
+    }, [subject]);
 
-        }
+    const Navigation = useNavigation();
+    const [subject, setsubject] = useState({});
+    function HandleValue(field, value) {
+      if (field.startsWith("time") || field.startsWith("room") || field.startsWith("day")) {
+        setsubject(prevSubject => ({
+          ...prevSubject,
+          schedule: {
+            ...(prevSubject.schedule || {}),
+            [field]: value
+          }
+        }));
+      } else {
+        setsubject(prevSubject => ({
+          ...prevSubject,
+          [field]: value
+        }));
+      }
+    }
+    
+    
 
     const [oneHorarios, setOneHorarios] = useState(true)
+    const [Picked1, setPicked1] = useState(false);
+    const [Picked2, setPicked2] = useState(false);
+    const [Picked3, setPicked3] = useState(false);
+    const [Picked4, setPicked4] = useState(false);
     function changeHorario() {
       setOneHorarios(!oneHorarios)
+    }
+    function storeSubject() {
+      storeData(subject);
+      setsubject({})
+      setPicked1(false)
+      setPicked2(false)
+      setPicked3(false)
+      setPicked4(false)
+      Navigation.navigate("Home")
     }
 
     return(
@@ -36,27 +62,30 @@ export default function Add_Subject() {
                 <View>
                   <Schedule subject={subject} number={1} setRoom={(value) => HandleValue("room1", value)} 
                             setDay = {(value) => HandleValue("day1", value)}
-                            setTimeIN={(value)=> HandleValue("timeIN_1", value.getHours() + ":"+ value.getMinutes())} 
-                            setTimeOUT={(value) => HandleValue("timeOUT_1", value.getHours() + ":"+ value.getMinutes())} />
+                            setTimeIN={(value)=> HandleValue("timeIN1", value)} 
+                            setTimeOUT={(value) => HandleValue("timeOUT1", value)}
+                            Picked1={Picked1} setPicked1={setPicked1} Picked2={Picked2} setPicked2={setPicked2} />
                   <Add_Horario texto={"Nova Sala / Horário"} pressed={changeHorario}/>
                 </View>     
               ) : (
                 <View>
                   <Schedule subject={subject} number={1} setRoom={(value) => HandleValue("room1", value)} 
                             setDay={(value) => HandleValue("day1", value)} 
-                            setTimeIN={(value)=> HandleValue("timeIN1", value.getHours() + ":"+ value.getMinutes())} 
-                            setTimeOUT={(value) => HandleValue("timeOUT1", value.getHours() + ":"+ value.getMinutes())}/>
+                            setTimeIN={(value)=> HandleValue("timeIN1", value)} 
+                            setTimeOUT={(value) => HandleValue("timeOUT1", value)}
+                            Picked1={Picked1} setPicked1={setPicked1} Picked2={Picked2} setPicked2={setPicked2}/>
 
                   <Schedule subject={subject} number={2} setRoom={(value) => HandleValue("room2", value)} 
                             setDay = {(value) => HandleValue("day2", value)}
-                            setTimeIN={(value) => HandleValue("timeIN2", value.getHours() + ":"+ value.getMinutes())} 
-                            setTimeOUT={(value) => HandleValue("timeOUT2", value.getHours() + ":"+ value.getMinutes())} />
+                            setTimeIN={(value) => HandleValue("timeIN2", value)} 
+                            setTimeOUT={(value) => HandleValue("timeOUT2", value)}
+                            Picked1={Picked3} setPicked1={setPicked3} Picked2={Picked4} setPicked2={setPicked4} />
 
                   <Add_Horario texto={"Remover Sala / Horário"} pressed={changeHorario}/>
                 </View>  
               )}
             </ScrollView>
-            <Add_Subject_Button subject={subject}/>
+            <Add_Subject_Button pressed={storeSubject}/>
         </View>
           
           )
