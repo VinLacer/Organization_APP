@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItems, DrawerItem} from '@react-navigation/drawer';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
-import { storeData, getData } from '../../data/storageData.js';
+import { getMultData } from '../../data/getData.js';
 
 export default function CustomDrawer(props) {
+    const [subjects, setSubjects] = useState([]);
+    const [Keys, setKeys] = useState('');
+
+    useEffect(() => {
+        getMultData({setKeys, setSubjects});
+    }, [subjects]);
+
     return(
         <View style={styles.container}>
         {/*HEADER*/}

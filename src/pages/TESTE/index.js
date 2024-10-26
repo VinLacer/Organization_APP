@@ -1,7 +1,7 @@
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState, useEffect} from 'react';
-import { deleteAllData, getMultData } from '../../data/storageData.js';
+import { getMultData } from '../../data/getData.js';
+import { deleteAllData } from '../../data/deleteData.js';
 
 export default function TESTE() {
     const [Final, setFinal] = useState('');
