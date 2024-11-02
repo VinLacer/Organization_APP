@@ -5,6 +5,8 @@ import CustomDrawer from "../components/Drawer/CustomDrawer";
 import Home from "../pages/Home/index";
 import TESTE from "../pages/TESTE/index";
 import Add_Subject from "../pages/Add_school_subject";
+import ShowSubject from "../pages/ShowSubject";
+import Add_stuff from "../pages/Add_Stuff";
 
 const Drawer = createDrawerNavigator();
 
@@ -26,6 +28,14 @@ export default function DrawerRoutes() {
             <Drawer.Screen name="Teste"
             component={TESTE}
             options={{title:"Pagina de teste", headerTitleAlign:"center"}}/>
+
+            <Drawer.Screen name="ShowSubject"
+            component={ShowSubject}
+            options={{title:"Dados da Matéria", headerTitleAlign:"center"}}/>
+
+            <Drawer.Screen name="Add Stuff"
+            component={Add_stuff}
+            options={{title:"Adicionar Tarefas", headerTitleAlign:"center"}}/>
 
         </Drawer.Navigator>
     )

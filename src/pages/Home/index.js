@@ -17,6 +17,11 @@ export default function Home() {
             Teste
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => Navigation.navigate('Add Stuff')}>
+          <Text>
+            Pagina de adicionar tarefas
+          </Text>
+        </TouchableOpacity>
     </View>
     );
   

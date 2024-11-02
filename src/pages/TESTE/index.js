@@ -1,22 +1,17 @@
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import { getMultData } from '../../data/getData.js';
-import { deleteAllData } from '../../data/deleteData.js';
+import { getMultData, deleteAllData } from '../../data/HandleData.js';
+
 
 export default function TESTE() {
-    const [Final, setFinal] = useState('');
     const [subjects, setSubjects] = useState([]);
-    const [Keys, setKeys] = useState('');
 
     useEffect(() => {
-        getMultData({setKeys, setSubjects});
+        getMultData({setSubjects});
     }, [subjects]); 
 
     function Teste() {
-        const teste = JSON.parse(subjects[0][1]);
-        setFinal(teste);
-        console.log(teste);
-        console.log("Chaves : " + Keys);
+        console.log(subjects)
     }
 
     return(
@@ -27,7 +22,7 @@ export default function TESTE() {
                 </Text>
             </TouchableOpacity>
             <Text style ={[{fontSize: 20}]}>
-                {JSON.stringify(Final)}
+                {subjects[0] != undefined ? subjects[0].mail : "OBJ Undefined"}
             </Text>
         </View>
     )

@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { DrawerContentScrollView, DrawerItems, DrawerItem} from '@react-navigation/drawer';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
-import { getMultData } from '../../data/getData.js';
+import { getMultData } from '../../data/HandleData.js';
+import ShowSubject from '../../pages/ShowSubject/index.js';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CustomDrawer(props) {
     const [subjects, setSubjects] = useState([]);
-    const [Keys, setKeys] = useState('');
+    const Navigation = useNavigation();
 
     useEffect(() => {
-        getMultData({setKeys, setSubjects});
-    }, [subjects]);
+        getMultData({setSubjects});
+    }, [subjects]);  
 
     return(
         <View style={styles.container}>
@@ -23,7 +25,18 @@ export default function CustomDrawer(props) {
 
             {/*DRAWER LIST ITEM*/}
             <View style={[{height: "80%", backgroundColor: '#E0E0E0'}]}>
-            
+                <DrawerContentScrollView>
+                    {subjects.map((item, index) => (
+                        <DrawerItem 
+                        st
+                        label={item.name} 
+                        key={index}
+                        onPress={() => {Navigation.navigate({name: 'ShowSubject',
+                                                             params: {subject: item}})}}
+                        /> 
+                    ))}
+                </DrawerContentScrollView>
+                
             </View>
             
             {/*BUTTON*/}
@@ -66,5 +79,9 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: RFValue(20),
         color: "white",
+    },
+
+    listItem:{
+        backgroundColor:"green"
     }
 })

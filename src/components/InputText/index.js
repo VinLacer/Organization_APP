@@ -16,8 +16,9 @@ export default function EntryText ({Titulo, Name, setName}){
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         height: "10%",
-        marginLeft: "10%"
+        marginLeft: "6%"
     },
 
     Text:{

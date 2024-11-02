@@ -6,13 +6,13 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 
 export default function TimePicker({ setTimeIN, setTimeOUT, setPicked1, Picked1, setPicked2, Picked2 }) {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [currentPicker, setCurrentPicker] = useState(null); // Define qual botão foi pressionado
+  const [currentPicker, setCurrentPicker] = useState(null); 
   const [TimeIn, setTimeIn] = useState();
   const [TimeOut, setTimeOut] = useState();
 
 
   const showDatePicker = (pickerNumber) => {
-    setCurrentPicker(pickerNumber); // Define qual botão chamou o DatePicker
+    setCurrentPicker(pickerNumber); 
     setDatePickerVisibility(true);
   };
 
@@ -45,18 +45,20 @@ export default function TimePicker({ setTimeIN, setTimeOUT, setPicked1, Picked1,
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Das</Text>
-      <TimeButton
-        title={Picked1 ? TimeIn : ""}
-        onPress={() => showDatePicker(1)}
-        icon={Picked1 ? "" : <AntDesign name="clockcircleo" size={20} marginTop={-20}/>}
-      />
 
-      <Text style={styles.text}>Até</Text>
-      <TimeButton
-        title={Picked2 ? TimeOut : ""}
-        onPress={() => showDatePicker(2)}
-        icon={Picked2 ? "" : <AntDesign name="clockcircleo" size={20} marginTop={-20}/>}
-      />
+        <TimeButton
+          title={Picked1 ? TimeIn : ""}
+          onPress={() => showDatePicker(1)}
+          icon={Picked1 ? "" : <AntDesign name="clockcircleo" size={20} marginTop={-23}/>}
+        />
+
+        <Text style={styles.text}>Até</Text>
+
+        <TimeButton
+          title={Picked2 ? TimeOut : ""}
+          onPress={() => showDatePicker(2)}
+          icon={Picked2 ? "" : <AntDesign name="clockcircleo" size={20} marginTop={-23}/>}
+        />
 
       <DateTimePicker
         isVisible={isDatePickerVisible}
@@ -71,17 +73,17 @@ export default function TimePicker({ setTimeIN, setTimeOUT, setPicked1, Picked1,
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     flexDirection: "row",
-    height: "60%",
-    width: "40%",
-    marginTop: 10,
+    height: "100%",
+    width: "100%",
+    marginTop: RFPercentage(5),
     columnGap: 8,
   },
   button: {
-    marginTop: 1,
-    height: RFPercentage(5),
+    height: "100%",
   },
   text: {
-    marginTop: 20,
-  },
+    height: RFPercentage(3)
+  }
 });

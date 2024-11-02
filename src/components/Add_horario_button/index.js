@@ -15,10 +15,11 @@ export default function Add_Horario({texto, pressed}) {
 
 const styles = StyleSheet.create({
     container: {
-        height: "20%",
-        width: "80%",
+        flex: 1,
+        height: "100%",
+        width: "85%",
         justifyContent: "center",
-        marginLeft: "10%"
+        marginLeft: "6%"
     },
     button: {
         height: "100%",

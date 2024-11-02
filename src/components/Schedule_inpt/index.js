@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         flexDirection: "row",
-        marginLeft: "10%",
+        marginLeft: "6%",
         columnGap: 10
     },
     classView: {
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
         width: "40%",
         height: "100%",
         justifyContent:"center",
-        textAlign: "center"
+        textAlign: "center",
+        marginLeft:RFPercentage(-1.4)
         
     }
 })

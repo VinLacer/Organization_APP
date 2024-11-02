@@ -1,9 +1,9 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { ScrollView, View, StyleSheet, KeyboardAvoidingView, Platform} from 'react-native';
-import { storeData } from '../../data/storageData.js';
+import { storeData } from '../../data/HandleData.js';
 import { useNavigation } from '@react-navigation/native';
 import EntryText from '../../components/InputText/index.js';
-import Add_Subject_Button from '../../components/Add_subject_button/index.js';
+import Add_Button from '../../components/Add_button/index.js';
 import Schedule from '../../components/Schedule_inpt/index.js';
 import Add_Horario from '../../components/Add_horario_button/index.js';
 
@@ -68,7 +68,7 @@ export default function Add_Subject() {
                   <Add_Horario texto={"Nova Sala / Horário"} pressed={changeHorario}/>
                 </View>     
               ) : (
-                <View>
+                <View >
                   <Schedule subject={subject} number={1} setRoom={(value) => HandleValue("room1", value)} 
                             setDay={(value) => HandleValue("day1", value)} 
                             setTimeIN={(value)=> HandleValue("timeIN1", value)} 
@@ -85,7 +85,7 @@ export default function Add_Subject() {
                 </View>  
               )}
             </ScrollView>
-            <Add_Subject_Button pressed={storeSubject}/>
+            <Add_Button pressed={storeSubject} title={"Adicionar Matéria"}/>
         </View>
           
           )
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     container: {
       flex:1,
       backgroundColor: "white",
-      marginTop: "20%"
+      marginTop: "23%"
     },
     ScroolContainer: {
       width: "100%",

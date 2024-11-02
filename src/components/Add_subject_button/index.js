@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 
-export default function Add_Subject_Button({pressed}) {
+export default function Add_Button({titlepressed}) {
 
     return(
         <View style={styles.container}>
